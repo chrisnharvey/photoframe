@@ -35,7 +35,7 @@ function App() {
       <>
         {photos.map((photo, key) => {
           return (
-            <SwiperSlide key={key}>
+            <SwiperSlide className="slide" key={key}>
               <img src={photo} rel='preload' />
             </SwiperSlide>
           )
