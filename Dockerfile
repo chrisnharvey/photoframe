@@ -5,7 +5,7 @@ RUN cd /ui && npm ci && npm run build
 
 FROM golang:1.18 AS go
 
-COPY --from=node /ui /ui
+COPY --from=node /ui/build /ui
 COPY ./api /app
 
 RUN cd /app && go build && mv /app/photoframe /photoframe && rm -rf /app
