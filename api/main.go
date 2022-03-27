@@ -7,9 +7,7 @@ import (
 
 func main() {
 	http.HandleFunc("/api/photos", servePhotos)
-
-	pics := http.FileServer(http.Dir(os.Getenv("PHOTOS_PATH")))
-	http.Handle("/photos/", http.StripPrefix("/photos/", pics))
+	http.HandleFunc("/photos/", servePhoto)
 
 	fs := http.FileServer(http.Dir(os.Getenv("UI_PATH")))
 	http.Handle("/", http.StripPrefix("/", fs))
