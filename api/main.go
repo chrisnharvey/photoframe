@@ -14,5 +14,5 @@ func main() {
 	fs := http.FileServer(http.Dir(os.Getenv("UI_PATH")))
 	http.Handle("/", http.StripPrefix("/", fs))
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(os.Getenv("LISTEN"), nil)
 }
