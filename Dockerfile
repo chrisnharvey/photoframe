@@ -18,5 +18,6 @@ RUN apk add gcompat
 
 ENV PHOTOS_PATH=/photos
 ENV UI_PATH=/ui
+ENV LISTEN=:80
 
 ENTRYPOINT "/photoframe"
