@@ -5,10 +5,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 func servePhotos(w http.ResponseWriter, r *http.Request) {
-	files, err := ioutil.ReadDir("../photos")
+	files, err := ioutil.ReadDir(os.Getenv("PHOTOS_PATH"))
 
 	if err != nil {
 		log.Fatal(err)
