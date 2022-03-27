@@ -10,7 +10,9 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("/api/photos").then(res => res.json()).then((res) => {
+      const { innerWidth: width, innerHeight: height } = window;
+
+      fetch(`/api/photos?w=${width}&h=${height}`).then(res => res.json()).then((res) => {
         setPhotos(res)
       })
     }, 2000);

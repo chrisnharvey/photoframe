@@ -18,7 +18,7 @@ func servePhotos(w http.ResponseWriter, r *http.Request) {
 	var photos []string
 
 	for _, f := range files {
-		photos = append(photos, "http://"+r.Host+"/photos/"+f.Name())
+		photos = append(photos, "http://"+r.Host+"/photos/"+f.Name()+"?"+r.URL.Query().Encode())
 	}
 
 	data, _ := json.Marshal(photos)
