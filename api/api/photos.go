@@ -1,15 +1,14 @@
-package main
+package api
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 )
 
-func servePhotos(w http.ResponseWriter, r *http.Request) {
-	files, err := ioutil.ReadDir(os.Getenv("PHOTOS_PATH"))
+func (api *Api) ServePhotos(w http.ResponseWriter, r *http.Request) {
+	files, err := ioutil.ReadDir(api.Settings.PhotosPath)
 
 	if err != nil {
 		log.Fatal(err)

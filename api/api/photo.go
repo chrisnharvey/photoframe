@@ -1,19 +1,18 @@
-package main
+package api
 
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"path"
 	"strconv"
 
 	"github.com/disintegration/imaging"
 )
 
-func servePhoto(w http.ResponseWriter, r *http.Request) {
+func (api *Api) ServePhoto(w http.ResponseWriter, r *http.Request) {
 	file := path.Base(r.URL.Path)
 
-	src, err := imaging.Open(os.Getenv("PHOTOS_PATH")+"/"+file, imaging.AutoOrientation(true))
+	src, err := imaging.Open(api.Settings.PhotosPath+"/"+file, imaging.AutoOrientation(true))
 
 	if err != nil {
 		fmt.Fprintf(w, "Error loading photo: %d", err)
